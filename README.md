@@ -12,7 +12,7 @@ dotnet paket add Feliz.GridLayout
 and install the npm package
 
 ```
-npm install --save react-flow-renderer
+npm install --save react-grid-layout
 ```
 
 or use Femto:
