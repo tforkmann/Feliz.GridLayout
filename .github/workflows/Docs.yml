@@ -1,9 +1,9 @@
-name: Client
+name: Docs
 
 on:
   workflow_dispatch:
   push:
-    branches: [ master ]
+    branches: [ main ]
     paths:
       - 'src/Docs/**'
       - '.github/workflows/Docs.yml'
