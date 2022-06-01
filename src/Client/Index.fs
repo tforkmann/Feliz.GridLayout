@@ -50,6 +50,7 @@ let GridLayoutChart () =
             GridLayout.autoSize false
             GridLayout.isDraggable true
             GridLayout.compactType Vertical
+            GridLayout.preventCollision true
             GridLayout.rowHeight 30
             GridLayout.onLayoutChange (fun layout ->
                 console.log layout

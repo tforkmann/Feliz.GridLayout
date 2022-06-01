@@ -69,6 +69,8 @@ type GridLayout =
 
     static member inline isDraggable(isDraggable: bool) : IGridLayoutProp =
         Interop.mkGridLayoutProp "isDraggable" isDraggable
+    static member inline isDropable(isDropable: bool) : IGridLayoutProp =
+        Interop.mkGridLayoutProp "isDropable" isDropable
     static member inline isResizable(isResizable: bool) : IGridLayoutProp =
         Interop.mkGridLayoutProp "isResizable" isResizable
     static member inline isBounded(isBounded: bool) : IGridLayoutProp =
