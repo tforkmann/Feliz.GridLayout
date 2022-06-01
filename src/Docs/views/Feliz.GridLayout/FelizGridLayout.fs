@@ -6,7 +6,6 @@ open Fable.React
 open Feliz.GridLayout
 open Browser.Dom
 
-
 let overview =
     Html.div [
         Bulma.title.h1 [

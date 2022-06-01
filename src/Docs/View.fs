@@ -22,13 +22,13 @@ let menuPart model dispatch =
           Bulma.menuList [ item "Overview" FelizGridLayout ]
           Bulma.menuList
               [ item "Installation" FelizGridLayoutInstallation
-                item "Example Grid" FelizGridLayoutExampleFlow ] ]
+                item "Example Grid" FelizGridLayoutExampleGrid ] ]
 
 let contentPart model dispatch =
     match model.CurrentPage with
     | FelizGridLayout -> Views.FelizGridLayout.overview
     | FelizGridLayoutInstallation -> Views.FelizGridLayout.installation
-    | FelizGridLayoutExampleFlow -> Views.ExampleFlow.overview
+    | FelizGridLayoutExampleGrid -> Views.ExampleGrid.overview
 
 
 open Zanaptak.TypedCssClasses

@@ -78,7 +78,9 @@ let overview =
         [ Bulma.title.h1 [ Html.text "Feliz.GridLayout Example" ]
           Bulma.content
               [ Html.p "Here is an example how to use GridLayout"
-                flowChart
+                div [ Props.Style [ Props.CSSProp.Height 350 ] ] [
+                    GridLayoutChart ()
+                ]
                 code """
                 let layouts =
                     [|  GridLayout.layout [
