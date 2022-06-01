@@ -25,9 +25,6 @@ jobs:
       - name: RunTests
         run: dotnet run ExecuteTests
 
-      - name: Build
-        run: dotnet run -- rundocs
-
       - name: Publish Docs
         uses: actions/upload-artifact@v2
         with:
