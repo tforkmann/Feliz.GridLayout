@@ -3,7 +3,10 @@
 .fake/
 .farmer/
 .idea/
+.cache/
+.parcel-cache/
 .ionide/
+dist/
 .vs/
 deploy/
 obj/
@@ -15,4 +18,6 @@ release.cmd
 release.sh
 *.orig
 *.DotSettings.user
+src/Docs/output/
+src/Client/output/
 tests/Client/output/

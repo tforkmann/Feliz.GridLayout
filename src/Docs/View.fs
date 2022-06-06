@@ -1,61 +1,169 @@
-module View
+module Docs.View
 
-open Domain
 open Feliz
-open Feliz.Bulma
 open Router
-open Shared
+open Elmish
+open SharedView
+open Feliz.DaisyUI
+open Feliz.DaisyUI.Operators
 
-let menuPart model dispatch =
-    let item (t: string) p =
-        let isActive =
-            if model.CurrentPage = p then [ helpers.isActive ] else []
+type Msg =
+    | UrlChanged of Page
+    | SetTheme of string
 
-        Bulma.menuItem.a
-            [ yield! isActive
-              prop.onClick (fun _ -> (SentToast t) |> dispatch)
-              prop.text t
-              prop.href (getHref p) ]
+type State = { Page: Page; Theme: string }
 
-    Bulma.menu
-        [ Bulma.menuLabel "Feliz.GridLayout"
-          Bulma.menuList [ item "Overview" FelizGridLayout ]
-          Bulma.menuList
-              [ item "Installation" FelizGridLayoutInstallation
-                item "Example Grid" FelizGridLayoutExampleGrid ] ]
+let init () =
+    let nextPage = Router.currentUrl () |> Page.parseFromUrlSegments
+    { Page = nextPage; Theme = "dark" }, Cmd.navigatePage nextPage
 
-let contentPart model dispatch =
-    match model.CurrentPage with
-    | FelizGridLayout -> Views.FelizGridLayout.overview
-    | FelizGridLayoutInstallation -> Views.FelizGridLayout.installation
-    | FelizGridLayoutExampleGrid -> Views.ExampleGrid.overview
+let update (msg: Msg) (state: State) : State * Cmd<Msg> =
+    match msg with
+    | UrlChanged page -> { state with Page = page }, Cmd.none
+    | SetTheme theme -> { state with Theme = theme }, Cmd.none
+
+let private rightSide state dispatch (title: string) (docLink: string) elm =
 
 
-open Zanaptak.TypedCssClasses
+    Daisy.drawerContent [
+        Daisy.navbar [
+            Daisy.navbarStart [
+                Html.divClassed
+                    "lg:hidden"
+                    [ Daisy.button.label [
+                          button.square
+                          button.ghost
+                          prop.htmlFor "main-menu"
+                          prop.children [
+                              Svg.svg [
+                                  svg.viewBox (0, 0, 24, 24)
+                                  svg.className "inline-block w-6 h-6 stroke-current"
+                                  svg.children [
+                                      Svg.path [
+                                          svg.d "M4 6h16M4 12h16M4 18h16"
+                                          svg.strokeWidth 2
+                                      ]
+                                  ]
+                              ]
+                          ]
+                      ] ]
+            ]
+        ]
 
-type Icon =
-    CssClasses<"https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", Naming.PascalCase>
+        Html.divClassed
+            "px-5 py-5"
+            [ Html.h2 [
+                  color.textPrimary
+                  ++ prop.className "my-6 text-5xl font-bold"
+                  prop.text title
+              ]
 
-type tailwind = CssClasses<"public/css/tailwind-generated.css", Naming.Verbatim>
+              elm ]
+    ]
 
-let view (model: Model) (dispatch: Msg -> unit) =
+let private leftSide (p: Page) =
+    let miBadge (b: string) (t: string) (mp: Page) =
+        Html.li [
+            Html.a [
+                prop.href mp
+                prop.onClick Router.goToUrl
+                if p = mp then
+                    (menuItem.active
+                     ++ prop.className "justify-between")
+                else
+                    prop.className "justify-between"
+                prop.children [
+                    Html.span t
+                    Html.span [
+                        prop.className "badge"
+                        prop.text b
+                    ]
+                ]
+            ]
+        ]
 
-    let render =
-        Html.div
-            [ prop.classes
-                [ tailwind.container
-                  tailwind.``md:flex``
-                  tailwind.``justify-center`` ]
-              prop.children
-                  [ Bulma.section
-                      [ Bulma.tile
-                          [ tile.isAncestor
-                            prop.children
-                                [ Bulma.tile
-                                    [ tile.is2
-                                      prop.children (menuPart model dispatch) ]
-                                  Bulma.tile (contentPart model dispatch) ] ] ] ] ]
+    let mi (t: string) (mp: Page) =
+        Html.li [
+            Html.a [
+                if p = mp then menuItem.active
+                prop.text t
+                prop.href mp
+                prop.onClick Router.goToUrl
+            ]
+        ]
 
-    React.router
-        [ router.onUrlChanged (parseUrl >> UrlChanged >> dispatch)
-          router.children [render] ]
+    Daisy.drawerSide [
+        Daisy.drawerOverlay [
+            prop.htmlFor "main-menu"
+        ]
+        Html.aside [
+            prop.className "flex flex-col border-r w-80 bg-base-100 text-base-content"
+            prop.children [
+                Html.divClassed
+                    "inline-block text-3xl font-title px-5 py-5 font-bold"
+                    [ Html.span [
+                          color.textPrimary
+                          prop.text "Clapper"
+                      ]
+                      Html.a [
+                          prop.href "https://www.nuget.org/packages/Clapper"
+                          prop.children [
+                              Html.img [
+                                  prop.src "https://img.shields.io/nuget/v/Clapper.svg?style=flat-square"
+                              ]
+                          ]
+                      ] ]
+                Daisy.menu [
+                    menu.compact
+                    prop.className "flex flex-col p-4 pt-0"
+                    prop.children [
+                        Daisy.menuTitle [ Html.span "Docs" ]
+                        mi "Install" Install
+                        mi "Use" Use
+                    ]
+                ]
+            ]
+        ]
+    ]
+
+let private inLayout state dispatch (title: string) (docLink: string) (p: Page) (elm: ReactElement) =
+    Html.div [
+        prop.className "bg-base-100 text-base-content h-screen"
+        theme.custom state.Theme
+        prop.children [
+            Html.h1 "Test"
+            Daisy.drawer [
+                drawer.mobile
+                prop.children [
+                    Daisy.drawerToggle [
+                        prop.id "main-menu"
+                    ]
+                    rightSide state dispatch title docLink elm
+                    leftSide p
+                ]
+            ]
+        ]
+    ]
+
+
+
+[<ReactComponent>]
+let AppView (state: State) (dispatch: Msg -> unit) =
+
+    let title, docLink, content =
+        match state.Page with
+        | Install -> "Installation", "/docs/install", Pages.Install.InstallView()
+        | Use -> "How to use", "/docs/use", Pages.Use.UseView()
+
+    React.router [
+        router.hashMode
+        router.onUrlChanged (
+            Page.parseFromUrlSegments
+            >> UrlChanged
+            >> dispatch
+        )
+        router.children [
+            content
+            |> inLayout state dispatch title docLink state.Page
+        ]
+    ]

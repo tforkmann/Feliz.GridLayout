@@ -84,7 +84,7 @@ Target.create "InstallClient" (fun _ -> run npm "install" ".")
 Target.create "Run" (fun _ ->
     run dotnet "build" sharedPath
     [ "server",  dotnet "watch run" serverPath
-      "client", dotnet "fable watch --run webpack-dev-server" clientPath  ]
+      "client", npm "start" "."  ]
       |> runParallel
 
 )
@@ -205,9 +205,8 @@ Target.create "PublishDocs" (fun _ ->
     run dotnet "fable --run webpack-cli -p" docsSrcPath
 )
 
-
 Target.create "RunDocs" (fun _ ->
-    run dotnet "fable watch --run webpack-dev-server --outDir src/Docs/output" docsSrcPath)
+    run npm "run startdocs" ".")
 
 let dependencies = [
 
