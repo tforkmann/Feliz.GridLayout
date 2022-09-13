@@ -30,7 +30,7 @@ let release = ReleaseNotes.load "RELEASE_NOTES.md"
 
 // Git configuration (used for publishing documentation in gh-pages branch)
 // The profile where the project is posted
-let gitHome = "https://github.com/DataBreezeUG"
+let gitHome = "https://github.com/tforkmann"
 // The name of the project on GitHub
 let gitName = "Feliz.GridLayout"
 
@@ -45,8 +45,8 @@ let projectUrl = sprintf "%s/%s" gitHome gitName
 let summary = "Feliz React Binding for GridLayout"
 
 let copyright = "Copyright \169 2021"
-let iconUrl = "https://raw.githubusercontent.com/databreezeug/Feliz.GridLayout/master/Feliz.GridLayout_logo.png"
-let licenceUrl = "https://github.com/databreezeug/FelizGridLayout/blob/master/LICENSE.md"
+let iconUrl = "https://raw.githubusercontent.com/tforkmann/Feliz.GridLayout/master/Feliz.GridLayout_logo.png"
+let licenceUrl = "https://github.com/tforkmann/FelizGridLayout/blob/master/LICENSE.md"
 let configuration = DotNet.BuildConfiguration.Release
 
 // Longer description of the project
@@ -54,7 +54,7 @@ let configuration = DotNet.BuildConfiguration.Release
 let description = """Feliz binding for React Grid Layout."""
 // List of author names (for NuGet package)
 let authors = [ "Tim Forkmann"]
-let owner = "DataBreeze Inc."
+let owner = "tforkmann"
 // Tags for your project (for NuGet package)
 let tags = "Feliz binding for GridLayout"
 
@@ -230,7 +230,7 @@ let dependencies = [
         ==> "InstallClient"
         ==> "UpdateTools"
         ==> "Build"
-        ==> "ExecuteTests"
+        // ==> "ExecuteTests"
         ==> "PrepareRelease"
         ==> "Pack"
         ==> "Push"

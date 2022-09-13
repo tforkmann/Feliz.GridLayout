@@ -1,7 +1,7 @@
 # Feliz Binding for [GridLayout](https://github.com/react-grid-layout/react-grid-layout)
 
 [![Feliz.GridLayout on Nuget](https://buildstats.info/nuget/Feliz.GridLayout)](https://www.nuget.org/packages/Feliz.GridLayout/)
-[![Client](https://github.com/DataBreezeUG/Feliz.GridLayout/actions/workflows/Docs.yml/badge.svg)](https://github.com/DataBreezeUG/Feliz.GridLayout/actions/workflows/Docs.yml)
+[![Client](https://github.com/tforkmann/Feliz.GridLayout/actions/workflows/Docs.yml/badge.svg)](https://github.com/tforkmann/Feliz.GridLayout/actions/workflows/Docs.yml)
 
 ## Installation
 Install the nuget package
