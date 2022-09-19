@@ -11,8 +11,6 @@ nuget Fable.Elmish.Debugger
 nuget Fable.FontAwesome.Free
 nuget Fable.Mocha
 nuget Fable.Remoting.Client
-nuget Feliz.Bulma
-nuget Fulma
 nuget Feliz.Router
 nuget Zanaptak.TypedCssClasses
 nuget Feliz.Markdown
@@ -27,6 +25,7 @@ nuget Feliz.GridLayout
 nuget Feliz.UseElmish
 nuget Feliz.DaisyUI
 nuget Feliz.Tailwind
+nuget Feliz.Bulma
 
 group Package
     source https://api.nuget.org/v3/index.json

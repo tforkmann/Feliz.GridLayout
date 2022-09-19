@@ -7,6 +7,7 @@ open Fable.Core.JsInterop
 type Page =
     | Install
     | Use
+    | GridLayout
 
 [<RequireQualifiedAccess>]
 module Page =
@@ -15,6 +16,7 @@ module Page =
     let parseFromUrlSegments =
         function
         | [ "use" ] -> Use
+        | [ "gridlayout" ] -> GridLayout
         | [] -> Install
         | _ -> defaultPage
 
@@ -24,6 +26,7 @@ module Page =
         function
         | Install -> [] |> noQueryString
         | Use -> [ "use" ] |> noQueryString
+        | GridLayout -> [ "gridlayout" ] |> noQueryString
 
 [<RequireQualifiedAccess>]
 module Router =

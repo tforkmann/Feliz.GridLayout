@@ -120,6 +120,7 @@ let private leftSide (p: Page) =
                         Daisy.menuTitle [ Html.span "Docs" ]
                         mi "Install" Install
                         mi "Use" Use
+                        mi "GridLayout" GridLayout
                     ]
                 ]
             ]
@@ -153,6 +154,8 @@ let AppView (state: State) (dispatch: Msg -> unit) =
         match state.Page with
         | Install -> "Installation", "/docs/install", Pages.Install.InstallView()
         | Use -> "How to use", "/docs/use", Pages.Use.UseView()
+        | GridLayout -> "GridLayout", "/docs/use", Pages.GridLayout.GridLayoutView()
+
 
     React.router [
         router.hashMode
