@@ -7,7 +7,8 @@
         "parcel:serve:docs": "parcel serve ./src/Docs/index.html --port 5000",
         "prestart": "dotnet tool restore",
         "startdocs": "cross-os startdocs",
-        "start": "cross-os start"
+        "start": "cross-os start",
+        "build": "dotnet fable ./src/Docs --outDir ./.fable-build && webpack"
     },
     "cross-os": {
         "startdocs": {
