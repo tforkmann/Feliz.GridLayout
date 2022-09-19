@@ -17,13 +17,13 @@ jobs:
       - name: Setup .NET 6 SDK
         uses: actions/setup-dotnet@v1.7.2
         with:
-          dotnet-version: 6.0.200
+          dotnet-version: 6.0.400
 
       - name: Install Tools
         run: dotnet tool restore
 
-      - name: RunTests
-        run: dotnet run ExecuteTests
+      - name: Build
+        run: dotnet run -- PublishDocs
 
       - name: Publish Docs
         uses: actions/upload-artifact@v2
