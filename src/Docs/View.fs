@@ -15,7 +15,7 @@ type State = { Page: Page; Theme: string }
 
 let init () =
     let nextPage = Router.currentUrl () |> Page.parseFromUrlSegments
-    { Page = nextPage; Theme = "dark" }, Cmd.navigatePage nextPage
+    { Page = nextPage; Theme = "corporate" }, Cmd.navigatePage nextPage
 
 let update (msg: Msg) (state: State) : State * Cmd<Msg> =
     match msg with
@@ -103,13 +103,13 @@ let private leftSide (p: Page) =
                     "inline-block text-3xl font-title px-5 py-5 font-bold"
                     [ Html.span [
                           color.textPrimary
-                          prop.text "Clapper"
+                          prop.text "Feliz.GridLayout"
                       ]
                       Html.a [
-                          prop.href "https://www.nuget.org/packages/Clapper"
+                          prop.href "https://www.nuget.org/packages/Feliz.GridLayout"
                           prop.children [
                               Html.img [
-                                  prop.src "https://img.shields.io/nuget/v/Clapper.svg?style=flat-square"
+                                  prop.src "https://img.shields.io/nuget/v/Feliz.GridLayout.svg?style=flat-square"
                               ]
                           ]
                       ] ]
@@ -131,7 +131,6 @@ let private inLayout state dispatch (title: string) (docLink: string) (p: Page) 
         prop.className "bg-base-100 text-base-content h-screen"
         theme.custom state.Theme
         prop.children [
-            Html.h1 "Test"
             Daisy.drawer [
                 drawer.mobile
                 prop.children [
