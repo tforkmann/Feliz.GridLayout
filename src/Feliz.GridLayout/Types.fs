@@ -6,6 +6,9 @@ open Fable.Core
 type IGridLayoutProp =
     interface
     end
+type IResponsiveGridLayoutProp =
+    interface
+    end
 
 type ILayout =
     interface

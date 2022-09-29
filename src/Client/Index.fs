@@ -29,7 +29,7 @@ let layouts =
                 layout.y 0
                 layout.w 1
                 layout.h 2
-                layout.``static`` true
+                layout.``static`` false
             ]
         GridLayout.layout [
             layout.i "b"
@@ -64,7 +64,13 @@ let GridLayoutChart () =
             GridLayout.children [
                 Html.div [
                     prop.key "a"
-                    prop.text "Texta"
+                    prop.children [
+                        Html.h1 "Texta"
+                        Html.h2 "Texta"
+                        Html.h3 "Texta"
+                        Html.h4 "Texta"
+                        Html.h5 "Texta"
+                    ]
                 ]
                 Html.div [
                     prop.key "b"
@@ -85,7 +91,59 @@ let GridLayoutChart () =
 
             ]
         ]
+
+[<ReactComponent>]
+let ResponsiveGridLayoutChart () =
+    ResponsiveGridLayout.responsiveGridChart [
+        ResponsiveGridLayout.layoutElements layouts
+        ResponsiveGridLayout.className "layout"
+        ResponsiveGridLayout.breakpoints{| lg= 1200; md= 996; sm= 768; xs= 480; xxs= 0 |}
+        ResponsiveGridLayout.cols {| lg= 12; md= 10; sm= 6; xs= 4; xxs= 2 |}
+        ResponsiveGridLayout.autoSize false
+        ResponsiveGridLayout.isDraggable true
+        ResponsiveGridLayout.compactType Horizontal
+        ResponsiveGridLayout.preventCollision true
+        ResponsiveGridLayout.rowHeight 30
+        ResponsiveGridLayout.onLayoutChange (fun layout ->
+            console.log layout
+            for e in layout do
+                console.log e.x
+                console.log e.y
+                console.log e.i
+                console.log e.w
+                console.log e.h)
+        // ResponsiveGridLayout.width 1200
+        ResponsiveGridLayout.children [
+            Html.div [
+                    prop.key "a"
+                    prop.children [
+                        Html.h1 "H1"
+                        Html.h2 "H2"
+                        Html.h3 "H3"
+                        Html.h4 "H4"
+                        Html.h5 "H5"
+                    ]
+                ]
+            Html.div [
+                prop.key "b"
+                prop.text "Textb"
+            ]
+            Html.div [
+                prop.key "c"
+                prop.text "Textc"
+            ]
+            Html.div [
+                prop.key "d"
+                prop.text "Textd"
+            ]
+            Html.div [
+                prop.key "e"
+                prop.text "TextE"
+            ]
+
+        ]
+    ]
 let view (model: Model) (dispatch: Msg -> unit) =
     div [ Props.Style [ Props.CSSProp.Height 800 ] ] [
-        GridLayoutChart ()
+        ResponsiveGridLayoutChart ()
     ]

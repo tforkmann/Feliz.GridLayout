@@ -9,7 +9,7 @@
       ]
     },
     "fable": {
-      "version": "3.7.18",
+      "version": "3.7.20",
       "commands": [
         "fable"
       ]
@@ -24,6 +24,12 @@
       "version": "5.23.0",
       "commands": [
         "fake"
+      ]
+    },
+    "fantomas-tool": {
+      "version": "4.7.9",
+      "commands": [
+        "fantomas"
       ]
     }
   }

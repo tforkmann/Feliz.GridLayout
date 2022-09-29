@@ -31,7 +31,6 @@ type DroppingItem = {
     h: int
 }
 
-// The !! below is used to "unsafely" expose a prop into an IGridLayoutProp.
 [<Erase>]
 type GridLayout =
     /// Creates a new ReactGridLayout component.
@@ -89,3 +88,63 @@ type GridLayout =
         unbox<IGridLayoutProp> (prop.children children)
 
     static member inline onLayoutChange(handler: Layout [] -> unit) : IGridLayoutProp = !!("onLayoutChange" ==> handler)
+
+// The !! below is used to "unsafely" expose a prop into an IGridLayoutProp.
+[<Erase>]
+type ResponsiveGridLayout =
+    /// Creates a new ReactGridLayout component.
+
+    static member inline responsiveGridChart(props: IResponsiveGridLayoutProp seq) =
+        Interop.reactApi.createElement (Interop.responsiveGridlayout, createObj !!props)
+
+    static member inline layoutElements(layoutElements: 'a array) : IResponsiveGridLayoutProp = !!("layout" ==> layoutElements)
+    static member inline layout props : ILayoutProp = !!(createObj !!props)
+
+    static member inline style props : IResponsiveGridLayoutProp =
+        Interop.mkResponsiveGridLayoutProp "style" (createObj !!props)
+
+    static member inline className(className: string) : IResponsiveGridLayoutProp =
+        Interop.mkResponsiveGridLayoutProp "className" className
+
+    static member inline cols(cols: obj) : IResponsiveGridLayoutProp = Interop.mkResponsiveGridLayoutProp "cols" cols
+    static member inline breakpoints(cols: obj) : IResponsiveGridLayoutProp = Interop.mkResponsiveGridLayoutProp "breakpoints" cols
+
+    static member inline rowHeight(rowHeight: int) : IResponsiveGridLayoutProp =
+        Interop.mkResponsiveGridLayoutProp "rowHeight" rowHeight
+
+    static member inline compactType(compactType: CompactType) : IResponsiveGridLayoutProp =
+        Interop.mkResponsiveGridLayoutProp "compactType" compactType
+
+    static member inline droppingItem( droppingItem:DroppingItem) : IResponsiveGridLayoutProp =
+        Interop.mkResponsiveGridLayoutProp "droppingItem" droppingItem
+
+    static member inline width(width: int) : IResponsiveGridLayoutProp = Interop.mkResponsiveGridLayoutProp "width" width
+
+    static member inline autoSize(autoSize: bool) : IResponsiveGridLayoutProp =
+        Interop.mkResponsiveGridLayoutProp "autoSize" autoSize
+
+    static member inline allowOverlap(allowOverlap: bool) : IResponsiveGridLayoutProp =
+        Interop.mkResponsiveGridLayoutProp "allowOverlap" allowOverlap
+
+    static member inline isDraggable(isDraggable: bool) : IResponsiveGridLayoutProp =
+        Interop.mkResponsiveGridLayoutProp "isDraggable" isDraggable
+    static member inline isDropable(isDropable: bool) : IResponsiveGridLayoutProp =
+        Interop.mkResponsiveGridLayoutProp "isDropable" isDropable
+    static member inline isResizable(isResizable: bool) : IResponsiveGridLayoutProp =
+        Interop.mkResponsiveGridLayoutProp "isResizable" isResizable
+    static member inline isBounded(isBounded: bool) : IResponsiveGridLayoutProp =
+        Interop.mkResponsiveGridLayoutProp "isBounded" isBounded
+    static member inline useCSSTransforms(useCSSTransforms: bool) : IResponsiveGridLayoutProp =
+        Interop.mkResponsiveGridLayoutProp "useCSSTransforms" useCSSTransforms
+    static member inline transformScale(transformScale: int) : IResponsiveGridLayoutProp =
+        Interop.mkResponsiveGridLayoutProp "transformScale" transformScale
+    static member inline preventCollision(preventCollision: bool) : IResponsiveGridLayoutProp =
+        Interop.mkResponsiveGridLayoutProp "preventCollision" preventCollision
+
+    // TODO: This is not yet implemented in the gridlayout.
+    // static member inline margin(margins: 'a array) : IResponsiveGridLayoutProp = !!("margin" ==> margins)
+
+    static member inline children(children: ReactElement list) =
+        unbox<IResponsiveGridLayoutProp> (prop.children children)
+
+    static member inline onLayoutChange(handler: Layout [] -> unit) : IResponsiveGridLayoutProp = !!("onLayoutChange" ==> handler)
