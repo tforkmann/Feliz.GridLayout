@@ -1,3 +1,5 @@
+#### 0.1.5 - 2022-10-16
+* update packages
 #### 0.1.4 - 2022-09-29
 * Add Responsive Chart layout
 #### 0.1.3 - 2022-09-13
