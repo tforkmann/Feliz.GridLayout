@@ -1,7 +1,4 @@
 namespace Feliz.GridLayout
-
-open Fable.Core
-
 /// This interface allows us to stop adding random props to the react grid layout.
 type IGridLayoutProp =
     interface

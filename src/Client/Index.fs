@@ -6,6 +6,7 @@ open Fable.React
 open Feliz
 open Feliz.GridLayout
 open Browser.Dom
+open Fable.React
 
 type Model =
     { Txt: string }

@@ -3,7 +3,6 @@ namespace Feliz.GridLayout
 open Fable.Core.JsInterop
 open Fable.Core
 open Feliz
-
 type Event = Browser.Types.Event
 
 [<Erase>]

@@ -1,7 +1,6 @@
 namespace Feliz.GridLayout
 
 open Fable.Core
-open Fable.Core.JsInterop
 open Feliz
 
 module KeyHelper =
