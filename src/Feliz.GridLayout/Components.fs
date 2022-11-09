@@ -2,7 +2,7 @@ namespace Feliz.GridLayout
 
 open Fable.Core
 open Feliz
-open Fable.React
+
 module KeyHelper =
     let keyHelper str =
         ".$" + str
