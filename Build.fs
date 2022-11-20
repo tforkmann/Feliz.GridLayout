@@ -44,7 +44,7 @@ let projectUrl = sprintf "%s/%s" gitHome gitName
 // (used as description in AssemblyInfo and as a short summary for NuGet package)
 let summary = "Feliz React Binding for GridLayout"
 
-let copyright = "Copyright \169 2021"
+let copyright = "Copyright \169 2022"
 let iconUrl = "https://raw.githubusercontent.com/tforkmann/Feliz.GridLayout/master/Feliz.GridLayout_logo.png"
 let licenceUrl = "https://github.com/tforkmann/FelizGridLayout/blob/master/LICENSE.md"
 let configuration = DotNet.BuildConfiguration.Release
@@ -56,7 +56,7 @@ let description = """Feliz binding for React Grid Layout."""
 let authors = [ "Tim Forkmann"]
 let owner = "tforkmann"
 // Tags for your project (for NuGet package)
-let tags = "Feliz binding for GridLayout"
+let tags = "fsharp;fable;GridLayout;feliz;react;Grids"
 
 
 Target.create "Clean" (fun _ ->

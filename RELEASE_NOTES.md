@@ -1,3 +1,5 @@
+#### 0.1.7 - 2022-11-19
+* add tags for fable.packages
 #### 0.1.6 - 2022-11-08
 * use new Feliz
 #### 0.1.5 - 2022-10-16
