@@ -13,8 +13,6 @@ open Helpers
 let execContext = Context.FakeExecutionContext.Create false "build.fsx" [ ]
 Context.setExecutionContext (Context.RuntimeContext.Fake execContext)
 
-let sharedPath = Path.getFullName "src/Shared"
-let serverPath = Path.getFullName "src/Server"
 let clientPath = Path.getFullName "src/Client"
 let deployDir = Path.getFullName "deploy"
 let sharedTestsPath = Path.getFullName "tests/Shared"
@@ -82,13 +80,10 @@ Target.create
 Target.create "InstallClient" (fun _ -> run npm "install" ".")
 
 Target.create "Run" (fun _ ->
-    run dotnet "build" sharedPath
-    [ "server",  dotnet "watch run" serverPath
-      "client", npm "start" "."  ]
+    [  "client", npm "start" "."  ]
       |> runParallel
 
 )
-
 Target.create "RunTests" (fun _ ->
     run dotnet "build" sharedTestsPath
     [ "server", dotnet "watch run" serverTestsPath
