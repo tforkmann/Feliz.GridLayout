@@ -3,7 +3,7 @@
   "isRoot": true,
   "tools": {
     "paket": {
-      "version": "7.2.0",
+      "version": "7.2.1",
       "commands": [
         "paket"
       ]
@@ -15,13 +15,19 @@
       ]
     },
     "fake-cli": {
-      "version": "5.23.1",
+      "version": "6.0.0",
       "commands": [
         "fake"
       ]
     },
     "fantomas": {
       "version": "5.1.3",
+      "commands": [
+        "fantomas"
+      ]
+    },
+    "fantomas-tool": {
+      "version": "4.7.9",
       "commands": [
         "fantomas"
       ]
