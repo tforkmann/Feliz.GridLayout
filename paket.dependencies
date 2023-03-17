@@ -2,11 +2,7 @@ source https://api.nuget.org/v3/index.json
 framework: net7.0
 storage: none
 
-nuget Fable.Remoting.Giraffe
-nuget Saturn
 nuget Expecto
-
-nuget Fable.Elmish.React
 nuget Fable.Elmish.Debugger
 nuget Fable.FontAwesome.Free
 nuget Fable.Mocha
@@ -20,7 +16,6 @@ nuget Fake.DotNet.Cli
 nuget Fake.Core.ReleaseNotes
 nuget Fake.Tools.Git
 nuget Fake.Core.UserInput
-nuget Farmer
 nuget Feliz.GridLayout
 nuget Feliz.UseElmish
 nuget Feliz.DaisyUI
@@ -31,4 +26,4 @@ group Package
     source https://api.nuget.org/v3/index.json
     framework: netstandard2.0
 
-    nuget Feliz prerelease
+    nuget Feliz
