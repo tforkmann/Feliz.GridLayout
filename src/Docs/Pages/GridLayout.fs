@@ -53,8 +53,7 @@ let GridLayoutChart () =
 
                 ] ]
 
-let gridChart =
-    div [ Props.Style [ Props.CSSProp.Height 800 ] ] [ GridLayoutChart() ]
+let gridChart = Html.div [ GridLayoutChart() ]
 
 
 let code =
@@ -126,9 +125,6 @@ let title = Html.text "GridLayout"
 
 [<ReactComponent>]
 let GridLayoutView () =
-    Html.div [
-        Bulma.content [
-            codedView title code gridChart
-        ]
-        fixDocsView "GridLayout" false
-    ]
+    Html.div
+        [ Bulma.content [ codedView title code gridChart ]
+          fixDocsView "GridLayout" false ]

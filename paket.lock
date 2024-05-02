@@ -195,7 +195,7 @@ NUGET
     Feliz.DaisyUI (4.2.1)
       Feliz (>= 2.7)
       FSharp.Core (>= 4.7.2)
-    Feliz.GridLayout (1.1)
+    Feliz.GridLayout (1.1.2)
       Feliz (>= 2.7)
     Feliz.Markdown (2.4)
       Feliz (>= 2.4)
