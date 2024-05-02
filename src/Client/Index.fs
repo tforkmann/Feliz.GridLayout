@@ -18,7 +18,7 @@ let update msg (model: Model) =
     match msg with
     | UpdateTxt txt -> { model with Txt = txt }, Cmd.none
 
-let layouts = [|
+let normalLayouts = [|
     GridLayout.layout [
         layout.i "1"
         layout.x 0
@@ -83,7 +83,7 @@ let layouts = [|
 [<ReactComponent>]
 let GridLayoutChart () =
     GridLayout.gridChart [
-        GridLayout.layoutElements layouts
+        GridLayout.layoutElements normalLayouts
         GridLayout.className "layout"
         GridLayout.cols 24
         GridLayout.autoSize false
@@ -120,229 +120,325 @@ let GridLayoutChart () =
         ]
     ]
 
-let responsiveLayout = {|
-    lg = [|
-        GridLayout.layout [
-            layout.i "1"
-            layout.x 0
-            layout.y 0
-            layout.w 2
-            layout.h 3
-            layout.minW 2
-            layout.maxW 3
-        ]
-        GridLayout.layout [
-            layout.i "2"
-            layout.x 2
-            layout.y 0
-            layout.w 2
-            layout.h 3
-            layout.minW 2
-            layout.maxW 3
-        ]
 
-        GridLayout.layout [
-            layout.i "3"
-            layout.x 4
-            layout.y 0
-            layout.w 2
-            layout.h 3
-            layout.minW 2
-            layout.maxW 3
-        ]
+//     |]
+//     md = [|
+//         GridLayout.layout [
+//             layout.i "1"
+//             layout.x 0
+//             layout.y 0
+//             layout.w 2
+//             layout.h 3
+//             layout.minW 2
+//             layout.maxW 3
+//         ]
+//         GridLayout.layout [
+//             layout.i "2"
+//             layout.x 2
+//             layout.y 0
+//             layout.w 2
+//             layout.h 3
+//             layout.minW 2
+//             layout.maxW 3
+//         ]
 
-        GridLayout.layout [
-            layout.i "4"
-            layout.x 6
-            layout.y 0
-            layout.w 2
-            layout.h 3
-            layout.minW 2
-            layout.maxW 3
-        ]
+//         GridLayout.layout [
+//             layout.i "3"
+//             layout.x 4
+//             layout.y 0
+//             layout.w 2
+//             layout.h 3
+//             layout.minW 2
+//             layout.maxW 3
+//         ]
 
-        GridLayout.layout [
-            layout.i "5"
-            layout.x 8
-            layout.y 0
-            layout.w 2
-            layout.h 3
-            layout.minW 2
-            layout.maxW 3
-        ]
-    |]
-    md = [|
-        GridLayout.layout [
-            layout.i "1"
-            layout.x 0
-            layout.y 0
-            layout.w 2
-            layout.h 3
-            layout.minW 2
-            layout.maxW 3
-        ]
-        GridLayout.layout [
-            layout.i "2"
-            layout.x 2
-            layout.y 0
-            layout.w 2
-            layout.h 3
-            layout.minW 2
-            layout.maxW 3
-        ]
+//         GridLayout.layout [
+//             layout.i "4"
+//             layout.x 6
+//             layout.y 0
+//             layout.w 2
+//             layout.h 3
+//             layout.minW 2
+//             layout.maxW 3
+//         ]
 
-        GridLayout.layout [
-            layout.i "3"
-            layout.x 4
-            layout.y 0
-            layout.w 2
-            layout.h 3
-            layout.minW 2
-            layout.maxW 3
-        ]
+//         GridLayout.layout [
+//             layout.i "5"
+//             layout.x 8
+//             layout.y 0
+//             layout.w 2
+//             layout.h 3
+//             layout.minW 2
+//             layout.maxW 3
+//         ]
+//     |]
+//     xs = [|
+//         GridLayout.layout [
+//             layout.i "1"
+//             layout.x 0
+//             layout.y 0
+//             layout.w 2
+//             layout.h 3
+//             layout.minW 2
+//             layout.maxW 3
+//         ]
+//         GridLayout.layout [
+//             layout.i "2"
+//             layout.x 0
+//             layout.y 3
+//             layout.w 2
+//             layout.h 3
+//             layout.minW 2
+//             layout.maxW 3
+//         ]
 
-        GridLayout.layout [
-            layout.i "4"
-            layout.x 6
-            layout.y 0
-            layout.w 2
-            layout.h 3
-            layout.minW 2
-            layout.maxW 3
-        ]
+//         GridLayout.layout [
+//             layout.i "3"
+//             layout.x 0
+//             layout.y 6
+//             layout.w 2
+//             layout.h 3
+//             layout.minW 2
+//             layout.maxW 3
+//         ]
 
-        GridLayout.layout [
-            layout.i "5"
-            layout.x 8
-            layout.y 0
-            layout.w 2
-            layout.h 3
-            layout.minW 2
-            layout.maxW 3
-        ]
-    |]
-    xs = [|
-        GridLayout.layout [
-            layout.i "1"
-            layout.x 0
-            layout.y 0
-            layout.w 2
-            layout.h 3
-            layout.minW 2
-            layout.maxW 3
-        ]
-        GridLayout.layout [
-            layout.i "2"
-            layout.x 0
-            layout.y 3
-            layout.w 2
-            layout.h 3
-            layout.minW 2
-            layout.maxW 3
-        ]
+//         GridLayout.layout [
+//             layout.i "4"
+//             layout.x 0
+//             layout.y 9
+//             layout.w 2
+//             layout.h 3
+//             layout.minW 2
+//             layout.maxW 3
+//         ]
 
-        GridLayout.layout [
-            layout.i "3"
-            layout.x 0
-            layout.y 6
-            layout.w 2
-            layout.h 3
-            layout.minW 2
-            layout.maxW 3
-        ]
+//         GridLayout.layout [
+//             layout.i "5"
+//             layout.x 0
+//             layout.y 12
+//             layout.w 2
+//             layout.h 3
+//             layout.minW 2
+//             layout.maxW 3
+//         ]
+//     |]
+//     xxs = [|
+//         GridLayout.layout [
+//             layout.i "1"
+//             layout.x 0
+//             layout.y 0
+//             layout.w 2
+//             layout.h 3
+//             layout.minW 2
+//             layout.maxW 3
+//         ]
+//         GridLayout.layout [
+//             layout.i "2"
+//             layout.x 0
+//             layout.y 3
+//             layout.w 2
+//             layout.h 3
+//             layout.minW 2
+//             layout.maxW 3
+//         ]
 
-        GridLayout.layout [
-            layout.i "4"
-            layout.x 0
-            layout.y 9
-            layout.w 2
-            layout.h 3
-            layout.minW 2
-            layout.maxW 3
-        ]
+//         GridLayout.layout [
+//             layout.i "3"
+//             layout.x 0
+//             layout.y 6
+//             layout.w 2
+//             layout.h 3
+//             layout.minW 2
+//             layout.maxW 3
+//         ]
 
-        GridLayout.layout [
-            layout.i "5"
-            layout.x 0
-            layout.y 12
-            layout.w 2
-            layout.h 3
-            layout.minW 2
-            layout.maxW 3
-        ]
-    |]
-    xxs = [|
-        GridLayout.layout [
-            layout.i "1"
-            layout.x 0
-            layout.y 0
-            layout.w 2
-            layout.h 3
-            layout.minW 2
-            layout.maxW 3
-        ]
-        GridLayout.layout [
-            layout.i "2"
-            layout.x 0
-            layout.y 3
-            layout.w 2
-            layout.h 3
-            layout.minW 2
-            layout.maxW 3
-        ]
+//         GridLayout.layout [
+//             layout.i "4"
+//             layout.x 0
+//             layout.y 9
+//             layout.w 2
+//             layout.h 3
+//             layout.minW 2
+//             layout.maxW 3
+//         ]
 
-        GridLayout.layout [
-            layout.i "3"
-            layout.x 0
-            layout.y 6
-            layout.w 2
-            layout.h 3
-            layout.minW 2
-            layout.maxW 3
-        ]
+//         GridLayout.layout [
+//             layout.i "5"
+//             layout.x 0
+//             layout.y 12
+//             layout.w 2
+//             layout.h 3
+//             layout.minW 2
+//             layout.maxW 3
+//         ]
+//     |]
 
-        GridLayout.layout [
-            layout.i "4"
-            layout.x 0
-            layout.y 9
-            layout.w 2
-            layout.h 3
-            layout.minW 2
-            layout.maxW 3
-        ]
-
-        GridLayout.layout [
-            layout.i "5"
-            layout.x 0
-            layout.y 12
-            layout.w 2
-            layout.h 3
-            layout.minW 2
-            layout.maxW 3
-        ]
-    |]
-
-|}
+// |}
 
 [<ReactComponent>]
 let ResponsiveGridLayoutChart () =
     ResponsiveGridLayout.responsiveGridChart [
-        ResponsiveGridLayout.layoutElements responsiveLayout
+        ResponsiveGridLayout.responsiveLayouts [
+            layouts.lg [
+                GridLayout.layout [
+                    layout.i "1"
+                    layout.x 0
+                    layout.y 0
+                    layout.w 2
+                    layout.h 3
+                    layout.minW 2
+                    layout.maxW 3
+                ]
+                GridLayout.layout [
+                    layout.i "2"
+                    layout.x 2
+                    layout.y 0
+                    layout.w 2
+                    layout.h 3
+                    layout.minW 2
+                    layout.maxW 3
+                ]
+
+                GridLayout.layout [
+                    layout.i "3"
+                    layout.x 4
+                    layout.y 0
+                    layout.w 2
+                    layout.h 3
+                    layout.minW 2
+                    layout.maxW 3
+                ]
+
+                GridLayout.layout [
+                    layout.i "4"
+                    layout.x 6
+                    layout.y 0
+                    layout.w 2
+                    layout.h 3
+                    layout.minW 2
+                    layout.maxW 3
+                ]
+
+                GridLayout.layout [
+                    layout.i "5"
+                    layout.x 8
+                    layout.y 0
+                    layout.w 2
+                    layout.h 3
+                    layout.minW 2
+                    layout.maxW 3
+                ]
+            ]
+            layouts.sm [
+                GridLayout.layout [
+                    layout.i "1"
+                    layout.x 0
+                    layout.y 0
+                    layout.w 2
+                    layout.h 3
+                    layout.minW 2
+                    layout.maxW 3
+                ]
+                GridLayout.layout [
+                    layout.i "2"
+                    layout.x 2
+                    layout.y 0
+                    layout.w 2
+                    layout.h 3
+                    layout.minW 2
+                    layout.maxW 3
+                ]
+
+                GridLayout.layout [
+                    layout.i "3"
+                    layout.x 4
+                    layout.y 0
+                    layout.w 2
+                    layout.h 3
+                    layout.minW 2
+                    layout.maxW 3
+                ]
+
+                GridLayout.layout [
+                    layout.i "4"
+                    layout.x 6
+                    layout.y 0
+                    layout.w 2
+                    layout.h 3
+                    layout.minW 2
+                    layout.maxW 3
+                ]
+
+                GridLayout.layout [
+                    layout.i "5"
+                    layout.x 8
+                    layout.y 0
+                    layout.w 2
+                    layout.h 3
+                    layout.minW 2
+                    layout.maxW 3
+                ]
+            ]
+            layouts.xxs [
+                GridLayout.layout [
+                    layout.i "1"
+                    layout.x 0
+                    layout.y 0
+                    layout.w 2
+                    layout.h 3
+                    layout.minW 2
+                    layout.maxW 3
+                ]
+                GridLayout.layout [
+                    layout.i "2"
+                    layout.x 0
+                    layout.y 3
+                    layout.w 2
+                    layout.h 3
+                    layout.minW 2
+                    layout.maxW 3
+                ]
+
+                GridLayout.layout [
+                    layout.i "3"
+                    layout.x 0
+                    layout.y 6
+                    layout.w 2
+                    layout.h 3
+                    layout.minW 2
+                    layout.maxW 3
+                ]
+
+                GridLayout.layout [
+                    layout.i "4"
+                    layout.x 0
+                    layout.y 9
+                    layout.w 2
+                    layout.h 3
+                    layout.minW 2
+                    layout.maxW 3
+                ]
+
+                GridLayout.layout [
+                    layout.i "5"
+                    layout.x 0
+                    layout.y 12
+                    layout.w 2
+                    layout.h 3
+                    layout.minW 2
+                    layout.maxW 3
+                ]
+            ]
+        ]
         ResponsiveGridLayout.className "layout"
-        ResponsiveGridLayout.breakpoints {|
-            lg = 1200
-            md = 996
-            sm = 768
-            xs = 600
-            xxs = 0
-        |}
-        ResponsiveGridLayout.cols {|
-            lg = 12
-            md = 10
-            sm = 6
-            xs = 2
-            xxs = 1
-        |}
+        ResponsiveGridLayout.breakpoints [
+            breakpoint.lg 1200
+            breakpoint.md 996
+            breakpoint.sm 768
+            breakpoint.xs 600
+            breakpoint.xxs 0
+        ]
+        ResponsiveGridLayout.cols [ cols.lg 12; cols.md 10; cols.sm 6; cols.xs 2; cols.xxs 1 ]
         // ResponsiveGridLayout.autoSize true
         // ResponsiveGridLayout.isDraggable true
         // ResponsiveGridLayout.compactType Horizontal

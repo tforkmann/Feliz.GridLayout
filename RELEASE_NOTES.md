@@ -1,3 +1,5 @@
+#### 1.1.2 - 2024-05-02
+* Responsive Grid Layout with new helpers
 #### 1.1.1 - 2024-05-02
 * Responsive Grid Layout
 #### 1.1.0 - 2024-01-12

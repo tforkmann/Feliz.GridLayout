@@ -15,6 +15,17 @@ type ILayoutProp =
     interface
     end
 
+type IColsProp =
+    interface
+    end
+
+type IBreakPointProp =
+    interface
+    end
+type ILayoutsProp =
+    interface
+    end
+
 type IItem =
     interface
     end

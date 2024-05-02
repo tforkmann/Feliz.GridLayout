@@ -96,7 +96,6 @@ type ResponsiveGridLayout =
     static member inline responsiveGridChart(props: IResponsiveGridLayoutProp seq) =
         Interop.reactApi.createElement (Interop.responsiveGridLayout, createObj !!props)
 
-    static member inline layoutElements(layoutElements: obj) : IResponsiveGridLayoutProp = !!("layouts" ==> layoutElements)
     static member inline layout props : ILayoutProp = !!(createObj !!props)
 
     static member inline style props : IResponsiveGridLayoutProp =
@@ -105,8 +104,10 @@ type ResponsiveGridLayout =
     static member inline className(className: string) : IResponsiveGridLayoutProp =
         Interop.mkResponsiveGridLayoutProp "className" className
 
-    static member inline cols(cols: obj) : IResponsiveGridLayoutProp = Interop.mkResponsiveGridLayoutProp "cols" cols
-    static member inline breakpoints(cols: obj) : IResponsiveGridLayoutProp = Interop.mkResponsiveGridLayoutProp "breakpoints" cols
+    static member inline cols (props: IColsProp seq) : IResponsiveGridLayoutProp = Interop.mkResponsiveGridLayoutProp "cols" (createObj !!props)
+
+    static member inline breakpoints(props: IBreakPointProp seq) : IResponsiveGridLayoutProp = Interop.mkResponsiveGridLayoutProp "breakpoints"  (createObj !!props)
+    static member inline responsiveLayouts(props: ILayoutsProp seq ) : IResponsiveGridLayoutProp = Interop.mkResponsiveGridLayoutProp "layouts" (createObj !!props)
 
     static member inline rowHeight(rowHeight: int) : IResponsiveGridLayoutProp =
         Interop.mkResponsiveGridLayoutProp "rowHeight" rowHeight
