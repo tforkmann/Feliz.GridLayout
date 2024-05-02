@@ -35,7 +35,7 @@ type GridLayout =
     /// Creates a new ReactGridLayout component.
 
     static member inline gridChart(props: IGridLayoutProp seq) =
-        Interop.reactApi.createElement (Interop.gridlayout, createObj !!props)
+        Interop.reactApi.createElement (Interop.gridLayout, createObj !!props)
 
     static member inline layoutElements(layoutElements: 'a array) : IGridLayoutProp = !!("layout" ==> layoutElements)
     static member inline layout props : ILayoutProp = !!(createObj !!props)
@@ -94,9 +94,9 @@ type ResponsiveGridLayout =
     /// Creates a new ReactGridLayout component.
 
     static member inline responsiveGridChart(props: IResponsiveGridLayoutProp seq) =
-        Interop.reactApi.createElement (Interop.responsiveGridlayout, createObj !!props)
+        Interop.reactApi.createElement (Interop.responsiveGridLayout, createObj !!props)
 
-    static member inline layoutElements(layoutElements: 'a array) : IResponsiveGridLayoutProp = !!("layout" ==> layoutElements)
+    static member inline layoutElements(layoutElements: obj) : IResponsiveGridLayoutProp = !!("layouts" ==> layoutElements)
     static member inline layout props : ILayoutProp = !!(createObj !!props)
 
     static member inline style props : IResponsiveGridLayoutProp =
@@ -140,7 +140,7 @@ type ResponsiveGridLayout =
     static member inline preventCollision(preventCollision: bool) : IResponsiveGridLayoutProp =
         Interop.mkResponsiveGridLayoutProp "preventCollision" preventCollision
 
-    // TODO: This is not yet implemented in the gridlayout.
+    // TODO: This is not yet implemented in the gridLayout.
     // static member inline margin(margins: 'a array) : IResponsiveGridLayoutProp = !!("margin" ==> margins)
 
     static member inline children(children: ReactElement list) =

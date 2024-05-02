@@ -10,7 +10,9 @@ module Interop =
     let inline mkResponsiveGridLayoutProp (key: string) (value: obj) : IResponsiveGridLayoutProp = unbox (key, value)
     let inline mkLayoutProp (key: string) (value: obj) : ILayoutProp = unbox (key, value)
 
-    let gridlayout : obj = importDefault "react-grid-layout"
+    let gridLayout : obj = importDefault "react-grid-layout"
     let gridItem : obj = importDefault "react-grid-layout"
     let layout : obj = importDefault "react-grid-layout"
-    let responsiveGridlayout : obj = import "Responsive" "react-grid-layout"
+    let responsive : obj = import "Responsive" "react-grid-layout"
+    let widthProvider : obj -> obj = import "WidthProvider" "react-grid-layout"
+    let responsiveGridLayout = widthProvider responsive
